@@ -1,6 +1,6 @@
 ---
 title: "Markov Decision Making"
-author: "Later"
+author: "Ritsaart Bergsma, Jeroen Landman, Witek ten Hove"
 format: revealjs
 editor: visual
 jupyter: python3
