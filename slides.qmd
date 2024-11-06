@@ -15,7 +15,7 @@ jupyter: python3
 
 ## Unichain
 
-**Assumption 3.3** *There is at least one state x ∈ X , such that there is a path from any state to x. If this is the case we call the chain unichain, state x is called recurrent.*
+**Definition 3.9.** *A unichain is a finite-state Markov chain that contains a single recurrent class and possibly, some transient states.*
 
 ::: aside
 Koole, G. (2006). *Lecture notes Stochastic Optimization.*
