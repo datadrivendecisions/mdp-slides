@@ -1,7 +1,14 @@
 ---
 title: "Markov Decision Making"
 author: "Ritsaart Bergsma, Jeroen Landman, Witek ten Hove"
-format: revealjs
+format:
+   revealjs:
+     slideNumber: true
+     transition: 'fade'
+     controls: true
+     progress: true
+     history: true
+     previewLinks: true
 editor: visual
 jupyter: python3
 ---
