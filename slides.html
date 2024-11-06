@@ -320,6 +320,9 @@
       margin-right: 0; 
     }
   </style>
+  <script src="slides_files/libs/quarto-diagram/mermaid.min.js"></script>
+  <script src="slides_files/libs/quarto-diagram/mermaid-init.js"></script>
+  <link href="slides_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -339,11 +342,36 @@ Ritsaart Bergsma, Jeroen Landman, Witek ten Hove
 </section>
 <section id="unichain" class="slide level2">
 <h2>Unichain</h2>
-<p><strong>Definition 3.9.</strong> <em>A unichain is a finite-state Markov chain that contains a single recurrent class and possibly, some transient states.</em></p>
-
-<aside><div>
-<p>Koole, G. (2006). <em>Lecture notes Stochastic Optimization.</em></p>
-</div></aside></section>
+<div class="columns">
+<div class="column" style="width:70%;">
+<p><strong>Definition</strong></p>
+<p><em>A unichain is a finite-state Markov chain that contains a single recurrent class and possibly, some transient states.</em></p>
+</div><div class="column" style="width:30%;">
+<div class="cell" data-reveal="true" data-fig-width="200px" data-fig-height="200px" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">stateDiagram
+    [*] --&gt; T1
+    [*] --&gt; T2
+    [*] --&gt; T3
+    T1 --&gt; R1
+    T2 --&gt; R1
+    T3 --&gt; R2
+    R1 --&gt; R2
+    R2 --&gt; R1
+    R1 --&gt; R1
+    R2 --&gt; R2: 1
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="aggregate-states" class="slide level2">
 <h2>Aggregate states</h2>
 <div id="fig-unichain" class="quarto-layout-panel">
@@ -568,7 +596,7 @@ Figure&nbsp;1: Policy examples
         height: 700,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 5.0e-2,
 
         math: {
           mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',

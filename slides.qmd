@@ -9,17 +9,41 @@ format:
      progress: true
      history: true
      previewLinks: true
+     margin: 0.05
 editor: visual
 jupyter: python3
 ---
 
 ## Unichain
 
-**Definition 3.9.** *A unichain is a finite-state Markov chain that contains a single recurrent class and possibly, some transient states.*
+::::: columns
 
-::: aside
-Koole, G. (2006). *Lecture notes Stochastic Optimization.*
+::: {.column width="70%"}
+**Definition**
+
+*A unichain is a finite-state Markov chain that contains a single recurrent class and possibly, some transient states.*
 :::
+
+::: {.column width="30%"}
+
+```{mermaid}
+%%| fig-width: 200px
+%%| fig-height: 200px
+stateDiagram
+    [*] --> T1
+    [*] --> T2
+    [*] --> T3
+    T1 --> R1
+    T2 --> R1
+    T3 --> R2
+    R1 --> R2
+    R2 --> R1
+    R1 --> R1
+    R2 --> R2: 1
+```
+
+:::
+:::::
 
 ## Aggregate states
 
