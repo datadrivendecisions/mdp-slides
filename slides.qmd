@@ -17,31 +17,45 @@ jupyter: python3
 ## Unichain
 
 ::::: columns
-
-::: {.column width="70%"}
+::: {.column width="60%"}
 **Definition**
 
 *A unichain is a finite-state Markov chain that contains a single recurrent class and possibly, some transient states.*
 :::
 
-::: {.column width="30%"}
+::: {.column width="40%"}
+```{python}
+from graphviz import Digraph
 
-```{mermaid}
-%%| fig-width: 200px
-%%| fig-height: 200px
-stateDiagram
-    [*] --> T1
-    [*] --> T2
-    [*] --> T3
-    T1 --> R1
-    T2 --> R1
-    T3 --> R2
-    R1 --> R2
-    R2 --> R1
-    R1 --> R1
-    R2 --> R2: 1
+# Create a new directed graph
+f = Digraph(format='png')
+f.attr(rankdir='TD', nodesep='1.0', ranksep='0.8')  # Increased nodesep and ranksep for more space between nodes
+
+# Define the nodes
+f.attr('node', shape='circle')
+f.node('T1')
+f.node('T2')
+f.node('T3')
+f.node('R1')
+f.node('R2')
+
+# Define the transitions
+f.edge('[*]', 'T1')
+f.edge('[*]', 'T2')
+f.edge('[*]', 'T3')
+f.edge('T1', 'R1')
+f.edge('T2', 'R1')
+f.edge('T3', 'R2')
+f.edge('R1', 'R2')
+f.edge('R2', 'R1')
+f.edge('R1', 'R1')
+f.edge('R2', 'R2', label='1')
+
+# Render the graph
+#f.render('unichain_example_diagram', view=False)
 ```
 
+![Unichain example](unichain_example_diagram.png)
 :::
 :::::
 
