@@ -15,5 +15,5 @@ digraph {
 	R1 -> R2
 	R2 -> R1
 	R1 -> R1
-	R2 -> R2 [label=1]
+	R2 -> R2
 }
