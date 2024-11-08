@@ -72,3 +72,11 @@ f.edge('R2', 'R2')
 
 Policy examples
 :::
+
+## LP Solution 1
+
+![Optimality criterion: average cost](averagecost.png){width="700"}
+
+## LP Solution 2
+
+![Optimality criterion: average cost with restriction on service rate 2](averagecostrestr.png)
