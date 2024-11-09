@@ -123,6 +123,25 @@ f.edge('R2', 'R2')
 Policy examples
 :::
 
+## Optimization Problem {.smaller}
+
+Minimize:
+
+$$
+P \sum_{i \in S} \sum_{a \in A(i)} c_i(a) x_{i,a}
+$$
+Subject to:
+$$
+\sum_{i \in S} \sum_{a \in A(i)} p_{ij}(a) x_{i,a} = \sum_{a \in A(j)} x_{j,a}, \quad \forall j \in S
+$$
+$$
+\sum_{i \in S} \sum_{a \in A(i)} x_{i,a} = 1
+$$
+
+$$
+x_{i,a} \geq 0, \quad \forall a \in A(i), \, i \in S
+$$
+
 ## Solution 1: LP
 
 ![Optimality criterion: average cost](averagecost.png){width="700"}
