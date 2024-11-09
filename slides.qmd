@@ -35,7 +35,7 @@ jupyter: python3
 -   **State space:**
     -   State $s = (x, b)$ consists of:
         -   Number of jobs $x \in X = \{0, 1, 2, \dots, 8\}$
-        -   Number of jobs $b \in B = \{0, 1, 2\}$ in the buffer
+        -   Current service rate $b \in B = \{0, 1, 2\}$
 -   **Actions:**
     -   $a \in A = \{0, 1, 2\}$
     -   Equivalent to selecting a service rate $b' \in B$ for the next epoch
