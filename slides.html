@@ -10,7 +10,9 @@
 <link href="slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.551">
 
-  <meta name="author" content="Ritsaart Bergsma, Jeroen Landman, Witek ten Hove">
+  <meta name="author" content="Ritsaart Bergsma">
+  <meta name="author" content="Jeroen Landman">
+  <meta name="author" content="Witek ten Hove">
   <title>Markov Decision Making</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -327,13 +329,33 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Markov Decision Making</h1>
+  <p class="subtitle"><a href="https://datadrivendecisions.github.io/mdp-slides/slides.html#/title-slide" target="_blank">Follow along here</a></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Ritsaart Bergsma, Jeroen Landman, Witek ten Hove 
+Ritsaart Bergsma 
 </div>
+        <p class="quarto-title-affiliation">
+            Windesheim UAS / VU
+          </p>
+    </div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Jeroen Landman 
 </div>
+        <p class="quarto-title-affiliation">
+            Bol.com
+          </p>
+    </div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Witek ten Hove 
+</div>
+        <p class="quarto-title-affiliation">
+            HAN UAS / VU
+          </p>
+    </div>
 </div>
 
 </section>
@@ -341,6 +363,71 @@ Ritsaart Bergsma, Jeroen Landman, Witek ten Hove
 <h2>Service control problem</h2>
 
 <img data-src="service-control.png" class="r-stretch"></section>
+<section id="model-overview" class="slide level2 smaller">
+<h2>Model Overview</h2>
+<ul>
+<li><strong>Decision Epochs:</strong>
+<ul>
+<li>Denoted as <span class="math inline">\(T = \{0, 1, 2, \dots\}\)</span></li>
+<li>Correspond to observation times <span class="math inline">\(0, \eta, 2\eta, \dots\)</span></li>
+</ul></li>
+<li><strong>State Space:</strong>
+<ul>
+<li>State <span class="math inline">\(s = (x, b)\)</span> consists of:
+<ul>
+<li>Number of jobs <span class="math inline">\(x \in X = \{0, 1, 2, \dots, 8\}\)</span></li>
+<li>Number of jobs <span class="math inline">\(b \in B = \{0, 1, 2\}\)</span> in the buffer</li>
+</ul></li>
+</ul></li>
+<li><strong>Actions:</strong>
+<ul>
+<li><span class="math inline">\(a \in A = \{0, 1, 2\}\)</span></li>
+<li>Equivalent to selecting a service rate <span class="math inline">\(b' \in B\)</span> for the next epoch</li>
+</ul></li>
+<li><strong>Transition Probabilities:</strong>
+<ul>
+<li>Depend on the arrival rate (Poisson distribution, rate = <span class="math inline">\(1.5\)</span> jobs per period of length <span class="math inline">\(\eta\)</span>) and the chosen service rate <span class="math inline">\(b'\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="model-overview---continued" class="slide level2 smaller">
+<h2>Model Overview - continued</h2>
+<ul>
+<li><p><strong>Immediate Costs:</strong></p>
+<ul>
+<li><strong>Service Completion Reward:</strong>
+<ul>
+<li>For each random number of service completions <span class="math inline">\(n \sim f_b(n)\)</span> system receives a reward of <span class="math inline">\(R = 5\)</span></li>
+</ul></li>
+<li><strong>Holding Cost:</strong>
+<ul>
+<li>Expected holding cost per period: <span class="math inline">\(h(x) = 2x\)</span></li>
+</ul></li>
+<li><strong>Service Rate Change Cost:</strong>
+<ul>
+<li>Fixed cost of <span class="math inline">\(K = 3\)</span> incurred if the controller changes the service rate (<span class="math inline">\(b \neq b'\)</span>)</li>
+</ul></li>
+<li><strong>Service Rate Usage Cost:</strong>
+<ul>
+<li>Cost <span class="math inline">\(d(b')\)</span> depends on the chosen service rate <span class="math inline">\(b'\)</span>:
+<ul>
+<li><span class="math inline">\(d(0) = 0, \quad d(1) = 2, \quad d(2) = 5\)</span></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="solution-methods" class="slide level2 smaller">
+<h2>Solution methods</h2>
+<ul>
+<li><p><strong>Linear Programming (LP):</strong></p>
+<ul>
+<li>with average cost criterion</li>
+<li>with average cost criterion and restriction on service rate 2</li>
+</ul></li>
+<li><p><strong>Value iteration (VI)</strong> <span style="color: tomato"><strong>(Check)</strong></span></p></li>
+</ul>
+</section>
 <section id="unichain" class="slide level2">
 <h2>Unichain</h2>
 <div class="columns">
@@ -395,14 +482,29 @@ Figure&nbsp;1: Policy examples
 </figure>
 </div>
 </section>
-<section id="lp-solution-1" class="slide level2">
-<h2>LP Solution 1</h2>
+<section id="solution-1-lp" class="slide level2">
+<h2>Solution 1: LP</h2>
 
 <img data-src="averagecost.png" width="700" class="r-stretch quarto-figure-center"><p class="caption">Optimality criterion: average cost</p></section>
-<section id="lp-solution-2" class="slide level2">
-<h2>LP Solution 2</h2>
+<section id="solution-2-lp-with-restriction" class="slide level2">
+<h2>Solution 2: LP with restriction</h2>
 
-<img data-src="averagecostrestr.png" class="r-stretch quarto-figure-center"><p class="caption">Optimality criterion: average cost with restriction on service rate 2</p><div class="quarto-auto-generated-content">
+<img data-src="averagecostrestr.png" class="r-stretch quarto-figure-center"><p class="caption">Optimality criterion: average cost with restriction on service rate 2</p></section>
+<section id="check-value-iteration" class="slide level2">
+<h2>Check: Value iteration</h2>
+<iframe src="value-iteration.html" width="720px" height="540px">
+</iframe>
+</section>
+<section id="policy-simuation" class="slide level2 scrollable">
+<h2>Policy simuation</h2>
+<iframe src="policy-sim.html" width="720px" height="540px">
+</iframe>
+</section>
+<section id="policy-simuation---average-cost" class="slide level2 scrollable">
+<h2>Policy simuation - average cost</h2>
+<iframe src="average-cost.html" width="720px" height="540px">
+</iframe>
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
@@ -418,6 +520,7 @@ Figure&nbsp;1: Policy examples
   <script src="slides_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="slides_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="slides_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -609,7 +712,7 @@ Figure&nbsp;1: Policy examples
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, PdfExport, QuartoSupport,
 
           RevealMath,
           RevealNotes,

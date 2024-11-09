@@ -1,6 +1,13 @@
 ---
 title: "Markov Decision Making"
-author: "Ritsaart Bergsma, Jeroen Landman, Witek ten Hove"
+subtitle: "<a href='https://datadrivendecisions.github.io/mdp-slides/slides.html#/title-slide' target='_blank'>Follow along here</a>"
+author:
+   - name: "Ritsaart Bergsma"
+     affiliation: "Windesheim UAS / VU"
+   - name: "Jeroen Landman"
+     affiliation: "Bol.com"
+   - name: "Witek ten Hove"
+     affiliation: "HAN UAS / VU"
 format:
    revealjs:
      slideNumber: true
@@ -10,6 +17,8 @@ format:
      history: true
      previewLinks: true
      margin: 0.05
+     revealjs-plugins:
+     - pdfexport
 editor: visual
 jupyter: python3
 ---
@@ -17,6 +26,44 @@ jupyter: python3
 ## Service control problem
 
 ![](service-control.png)
+
+## Model Overview {.smaller}
+
+-   **Decision Epochs:**
+    -   Denoted as $T = \{0, 1, 2, \dots\}$
+    -   Correspond to observation times $0, \eta, 2\eta, \dots$
+-   **State Space:**
+    -   State $s = (x, b)$ consists of:
+        -   Number of jobs $x \in X = \{0, 1, 2, \dots, 8\}$
+        -   Number of jobs $b \in B = \{0, 1, 2\}$ in the buffer
+-   **Actions:**
+    -   $a \in A = \{0, 1, 2\}$
+    -   Equivalent to selecting a service rate $b' \in B$ for the next epoch
+-   **Transition Probabilities:**
+    -   Depend on the arrival rate (Poisson distribution, rate = $1.5$ jobs per period of length $\eta$) and the chosen service rate $b'$
+
+## Model Overview - continued {.smaller}
+
+-   **Immediate Costs:**
+
+    -   **Service Completion Reward:**
+        -   For each random number of service completions $n \sim f_b(n)$ system receives a reward of $R = 5$
+    -   **Holding Cost:**
+        -   Expected holding cost per period: $h(x) = 2x$
+    -   **Service Rate Change Cost:**
+        -   Fixed cost of $K = 3$ incurred if the controller changes the service rate ($b \neq b'$)
+    -   **Service Rate Usage Cost:**
+        -   Cost $d(b')$ depends on the chosen service rate $b'$:
+            -   $d(0) = 0, \quad d(1) = 2, \quad d(2) = 5$
+
+## Solution methods {.smaller}
+
+-   **Linear Programming (LP):**
+
+    -   with average cost criterion
+    -   with average cost criterion and restriction on service rate 2
+
+-   **Value iteration (VI)** [**(Check)**]{style="color: tomato"}
 
 ## Unichain
 
@@ -73,10 +120,28 @@ f.edge('R2', 'R2')
 Policy examples
 :::
 
-## LP Solution 1
+## Solution 1: LP
 
 ![Optimality criterion: average cost](averagecost.png){width="700"}
 
-## LP Solution 2
+## Solution 2: LP with restriction
 
 ![Optimality criterion: average cost with restriction on service rate 2](averagecostrestr.png)
+
+## Check: Value iteration
+
+<iframe src="value-iteration.html" width="720px" height="540px">
+
+</iframe>
+
+## Policy simuation {.scrollable}
+
+<iframe src="policy-sim.html" width="720px" height="540px">
+
+</iframe>
+
+## Policy simuation - average cost {.scrollable}
+
+<iframe src="average-cost.html" width="720px" height="540px">
+
+</iframe>
