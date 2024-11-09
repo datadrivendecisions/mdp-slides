@@ -29,10 +29,10 @@ jupyter: python3
 
 ## Model overview {.smaller}
 
--   **Decision Epochs:**
+-   **Decision epochs:**
     -   Denoted as $T = \{0, 1, 2, \dots\}$
     -   Correspond to observation times $0, \eta, 2\eta, \dots$
--   **State Space:**
+-   **State space:**
     -   State $s = (x, b)$ consists of:
         -   Number of jobs $x \in X = \{0, 1, 2, \dots, 8\}$
         -   Number of jobs $b \in B = \{0, 1, 2\}$ in the buffer
@@ -42,7 +42,7 @@ jupyter: python3
     
 ## Model overview - cont. {.smaller}
 
--   **Transition Probabilities:**
+-   **Transition probabilities:**
     -   Depend on the arrival rate (Poisson distribution, rate = $1.5$ jobs per period of length $\eta$) and the chosen service rate $b'$
 
 ## Model overview - cont. {.smaller}
@@ -123,7 +123,7 @@ f.edge('R2', 'R2')
 Policy examples
 :::
 
-## Optimization Problem {.smaller}
+## Optimization problem {.smaller}
 
 Minimize:
 
