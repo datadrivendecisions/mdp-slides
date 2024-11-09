@@ -27,7 +27,7 @@ jupyter: python3
 
 ![](service-control.png)
 
-## Model Overview {.smaller}
+## Model overview {.smaller}
 
 -   **Decision Epochs:**
     -   Denoted as $T = \{0, 1, 2, \dots\}$
@@ -40,12 +40,12 @@ jupyter: python3
     -   $a \in A = \{0, 1, 2\}$
     -   Equivalent to selecting a service rate $b' \in B$ for the next epoch
     
-## Model Overview - cont. {.smaller}
+## Model overview - cont. {.smaller}
 
 -   **Transition Probabilities:**
     -   Depend on the arrival rate (Poisson distribution, rate = $1.5$ jobs per period of length $\eta$) and the chosen service rate $b'$
 
-## Model Overview - cont. {.smaller}
+## Model overview - cont. {.smaller}
 
 -   **Immediate Costs:**
 
