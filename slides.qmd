@@ -39,10 +39,13 @@ jupyter: python3
 -   **Actions:**
     -   $a \in A = \{0, 1, 2\}$
     -   Equivalent to selecting a service rate $b' \in B$ for the next epoch
+    
+## Model Overview - cont. {.smaller}
+
 -   **Transition Probabilities:**
     -   Depend on the arrival rate (Poisson distribution, rate = $1.5$ jobs per period of length $\eta$) and the chosen service rate $b'$
 
-## Model Overview - continued {.smaller}
+## Model Overview - cont. {.smaller}
 
 -   **Immediate Costs:**
 
