@@ -47,21 +47,21 @@ jupyter: python3
 
 ## Model overview - cont. {.smaller}
 
--   **Immediate Costs:**
+-   **Immediate costs:**
 
-    -   **Service Completion Reward:**
+    -   **Service completion reward:**
         -   For each random number of service completions $n \sim f_b(n)$ system receives a reward of $R = 5$
-    -   **Holding Cost:**
+    -   **Holding cost:**
         -   Expected holding cost per period: $h(x) = 2x$
-    -   **Service Rate Change Cost:**
+    -   **Service rate change cost:**
         -   Fixed cost of $K = 3$ incurred if the controller changes the service rate ($b \neq b'$)
-    -   **Service Rate Usage Cost:**
+    -   **Service rate usage cost:**
         -   Cost $d(b')$ depends on the chosen service rate $b'$:
             -   $d(0) = 0, \quad d(1) = 2, \quad d(2) = 5$
 
 ## Solution methods {.smaller}
 
--   **Linear Programming (LP):**
+-   **Linear programming (LP):**
 
     -   with average cost criterion
     -   with average cost criterion and restriction on service rate 2
