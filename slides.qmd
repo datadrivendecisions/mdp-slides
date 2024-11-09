@@ -137,13 +137,13 @@ Policy examples
 
 </iframe>
 
-## Policy simuation {.scrollable}
+## Policy simulation {.scrollable}
 
 <iframe src="policy-sim.html" width="720px" height="540px">
 
 </iframe>
 
-## Policy simuation - average cost {.scrollable}
+## Policy simulation - average cost {.scrollable}
 
 <iframe src="average-cost.html" width="720px" height="540px">
 
