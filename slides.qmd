@@ -128,7 +128,7 @@ Policy examples
 Minimize:
 
 $$
-P \sum_{i \in S} \sum_{a \in A(i)} c_i(a) x_{i,a}
+\sum_{i \in S} \sum_{a \in A(i)} c_i(a) x_{i,a}
 $$
 Subject to:
 $$
